@@ -1,27 +1,17 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+//задаем свой алфавит
 public class Alphabet {
 
-    public static ArrayList<Character> alphabet = new ArrayList<>();
-    public static int alphabetSize;
-
-    public Alphabet() {
-        for (char symbol = 'а'; symbol <= 'я'; symbol++) {
-            alphabet.add(symbol);
-        }
-        for (char symbol = 'А'; symbol <= 'Я'; symbol++) {
-            alphabet.add(symbol);
-        }
-        alphabet.add('.');
-        alphabet.add(',');
-        alphabet.add('!');
-        alphabet.add('?');
-        alphabet.add('-');
-        alphabet.add('"');
-        alphabet.add(':');
-        alphabet.add(' ');
-        alphabetSize = alphabet.size();
-    }
-
+    private static Character[] alphabetChar = {
+            'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о',
+            'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я',
+            'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О',
+            'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я',
+            '.', ',', '\"', ':', '-', '!', '?', ' '};
+    public static final List<Character> alphabet = new ArrayList<>(Arrays.asList(alphabetChar));
+    public static final int alphabetSize = alphabet.size();
 
 }
