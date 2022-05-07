@@ -1,23 +1,25 @@
+package com.javarush.golf.fusteugen.cryptoanalyzer;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class DecrypterBruteForce {
-    private static final String[] truth = {", ", ". ", "! ", ": ", "? ", " и "};
-    private static final String[] mistakes = {",.", ",?", ",!", ":,", ":.", ":!", ":?", ".!", ".?", ".,"};
-    private static final List<String> patternOfTruth = new ArrayList<>(Arrays.asList(truth));
-    private static final List<String> patternOfMistakes = new ArrayList<>(Arrays.asList(mistakes));
+    private static final String[] TRUTH = {", ", ". ", "! ", ": ", "? ", " и "};
+    private static final String[] MISTAKES = {",.", ",?", ",!", ":,", ":.", ":!", ":?", ".!", ".?", ".,"};
+    private static final List<String> PATTERN_OF_TRUTH = new ArrayList<>(Arrays.asList(TRUTH));
+    private static final List<String> PATTERN_OF_MISTAKES = new ArrayList<>(Arrays.asList(MISTAKES));
 
     public static int getDecryptionKey(List<String> encryptedText) {
         //delta для сбора статистики количество совпадений
-        double[] delta = new double[Alphabet.alphabetSize];
+        double[] delta = new double[Alphabet.ALPHABET_SIZE];
         int key;
         //проход по всем значениям ключа
-        for (key = 1; key < Alphabet.alphabetSize; key++) {
+        for (key = 0; key < Alphabet.ALPHABET_SIZE; key++) {
             List<String> decryptedText;
             decryptedText = Decrypter.formationDecryptedText(encryptedText, key);
-            long sumTruth = getSumOfMatches(decryptedText, patternOfTruth);
-            long sumMistakes = getSumOfMatches(decryptedText, patternOfMistakes);
+            long sumTruth = getSumOfMatches(decryptedText, PATTERN_OF_TRUTH);
+            long sumMistakes = getSumOfMatches(decryptedText, PATTERN_OF_MISTAKES);
             delta[key] = (double) sumTruth /sumMistakes;
         }
         key = indexMaxValue(delta);

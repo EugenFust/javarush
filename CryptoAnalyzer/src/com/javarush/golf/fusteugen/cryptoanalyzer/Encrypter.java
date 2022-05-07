@@ -1,3 +1,5 @@
+package com.javarush.golf.fusteugen.cryptoanalyzer;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,10 +12,10 @@ public class Encrypter {
             StringBuilder encryptedLine = new StringBuilder();
             //проход по всем символам в строке
             for (char symbol : lineToChar) {
-                if (Alphabet.alphabet.contains(symbol)) {
+                if (Alphabet.ALPHABET.contains(symbol)) {
                     //вычисляем позицию зашифрованного символа и добавляем символ в строку
-                    int positionEncryptedSymbol = (Alphabet.alphabet.indexOf(symbol) + key) % Alphabet.alphabetSize;
-                    char encryptedSymbol = Alphabet.alphabet.get(positionEncryptedSymbol);
+                    int positionEncryptedSymbol = (Alphabet.ALPHABET.indexOf(symbol) + key) % Alphabet.ALPHABET_SIZE;
+                    char encryptedSymbol = Alphabet.ALPHABET.get(positionEncryptedSymbol);
                     encryptedLine.append(encryptedSymbol);
                 }
             }
